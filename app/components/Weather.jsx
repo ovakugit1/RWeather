@@ -40,14 +40,14 @@ var Weather = React.createClass({
     function renderError() {
       if(errorMessage && typeof errorMessage === 'string'){
         return (
-          <ErrorModal message={errorMessage} title="Yaramin basi"/>
+          <ErrorModal message={errorMessage} />
         );
       }
     }
 
     return (
       <div>
-        <h1 className="text-center">Get Weather</h1>
+        <h1 className="text-center page-title">Get Weather</h1>
           <WeatherForm onSearch={this.handleSearch}/>
           {renderMessage()}
           {renderError()}
