@@ -28,19 +28,17 @@ var Weather = React.createClass({
       });
     });
   },
-  componentDidMount: function () {
-    var location = this.props.location.query.location;
+  handleOuterSearch: function (location) {
     if(location && location.length > 0) {
       this.handleSearch(location);
       window.location.hash = '#/';
     }
   },
+  componentDidMount: function () {
+    this.handleOuterSearch(this.props.location.query.location);
+  },
   componentWillReceiveProps: function (newProps) {
-    var location = newProps.location.query.location;
-    if(location && location.length > 0) {
-      this.handleSearch(location);
-      window.location.hash = '#/';
-    }
+    this.handleOuterSearch(newProps.location.query.location);
   },
   render: function() {
     var {isLoading, temp, location, errorMessage} = this.state;
